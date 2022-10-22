@@ -1,5 +1,12 @@
 # PASETO for WordPress
 
+[![Build Status](https://github.com/soatok/wp-paseto/actions/workflows/ci.yml/badge.svg)](https://github.com/soatok/wp-paseto/actions)
+[![Static Analysis](https://github.com/soatok/wp-paseto/actions/workflows/psalm.yml/badge.svg)](https://github.com/soatok/wp-paseto/actions)
+[![Latest Stable Version](https://poser.pugx.org/soatok/wp-paseto/v/stable)](https://packagist.org/packages/soatok/wp-paseto)
+[![Latest Unstable Version](https://poser.pugx.org/soatok/wp-paseto/v/unstable)](https://packagist.org/packages/soatok/wp-paseto)
+[![License](https://poser.pugx.org/soatok/wp-paseto/license)](https://packagist.org/packages/soatok/wp-paseto)
+[![Downloads](https://img.shields.io/packagist/dt/soatok/wp-paseto.svg)](https://packagist.org/packages/soatok/wp-paseto)
+
 Requirements:
 
 * PHP 5.6 or newer
