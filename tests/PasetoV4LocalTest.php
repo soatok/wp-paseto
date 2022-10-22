@@ -32,6 +32,9 @@ class PasetoV4LocalTest extends TestCase
                     $test['token'],
                     $test['implicit-assertion']
                 );
+                if (is_null($decoded)) {
+                    throw new PasetoException('Decode fail');
+                }
                 $this->assertSame($decoded, $test['payload'],  $name . ' - ' . $test['name']);
             } catch (PasetoException $ex) {
                 continue;
