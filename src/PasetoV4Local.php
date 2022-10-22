@@ -106,6 +106,9 @@ class PasetoV4Local
         }
         $pieces = explode('.', $token);
         if (count($pieces) === 4) {
+            if ($pieces[3] !== rtrim($pieces[3], '=')) {
+                throw new PasetoException('PASETO must use unpadded base64url encoding; padding characters found');
+            }
             $footer = PasetoUtil::b64u_decode($pieces[3]);
         } elseif (count($pieces) === 3) {
             $footer = '';
