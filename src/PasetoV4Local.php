@@ -189,6 +189,16 @@ class PasetoV4Local
     {
         $params = func_get_args();
         $num = func_num_args();
+        if (PHP_INT_SIZE === 4) {
+            $accumulator =  pack('V', $num) . "\x00\x00\x00\x00";
+            for ($i = 0; $i < $num; ++$i) {
+                $length = ParagonIE_Sodium_Core_Util::strlen($params[$i]);
+                $accumulator .= pack('V', $length) . "\x00\x00\x00\x00";
+                $accumulator .= $params[$i];
+            }
+            return $accumulator;
+        }
+
         $accumulator =  pack('P', $num);
         for ($i = 0; $i < $num; ++$i) {
             $length = ParagonIE_Sodium_Core_Util::strlen($params[$i]);
