@@ -1,0 +1,31 @@
+{
+  "name": "soatok/wp-paseto",
+  "authors": [
+    {
+      "name": "Soatok Dreamseeker",
+      "email": "soatok.dhole@gmail.com",
+      "homepage": "https://soatok.blog"
+    }
+  ],
+  "keywords": ["PASETO", "PHP 5.6", "encryption"],
+  "description": "PASETO v4.local implementation that supports PHP 5.6+ (for WordPress projects)",
+  "license": "ISC",
+  "autoload": {
+    "files": [
+      "src/PasetoException.php",
+      "src/PasetoKeyManager.php",
+      "src/PasetoUtil.php",
+      "src/PasetoV4Local.php",
+      "src/WP_Paseto.php"
+    ]
+  },
+  "require": {
+    "php": ">= 5.6",
+    "ext-json": "*",
+    "paragonie/sodium_compat": "^1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">= 5",
+    "vimeo/psalm": ">= 1"
+  }
+}
