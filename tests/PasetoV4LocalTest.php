@@ -3,6 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 class PasetoV4LocalTest extends TestCase
 {
+    /** @var array<string, PasetoV4Local> $keyCache */
     private $keyCache = array();
 
     public function getTestVectors()
@@ -30,11 +31,9 @@ class PasetoV4LocalTest extends TestCase
             try {
                 $decoded = $this->cacheKey($test['key'])->decrypt(
                     $test['token'],
-                    $test['implicit-assertion']
+                    $test['implicit-assertion'],
+                    $test['footer']
                 );
-                if (is_null($decoded)) {
-                    throw new PasetoException('Decode fail');
-                }
                 $this->assertSame($decoded, $test['payload'],  $name . ' - ' . $test['name']);
             } catch (PasetoException $ex) {
                 continue;

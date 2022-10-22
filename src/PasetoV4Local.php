@@ -24,6 +24,21 @@ class PasetoV4Local
     }
 
     /**
+     * @param string $token
+     * @param string $expectedFooter
+     * @return void
+     * @throws PasetoException
+     * @throws SodiumException
+     */
+    public function assertFooter($token, $expectedFooter)
+    {
+        $footer = PasetoUtil::extractFooter($token);
+        if (!ParagonIE_Sodium_Core_Util::hashEquals($footer, $expectedFooter)) {
+            throw new PasetoException("Footer assertion failed.");
+        }
+    }
+
+    /**
      * @param string $message
      * @param string $footer
      * @param string $implicit
@@ -77,11 +92,12 @@ class PasetoV4Local
     /**
      * @param string $token
      * @param string $implicit
+     * @param ?string $expectedFooter
      * @return string
      * @throws PasetoException
      * @throws SodiumException
      */
-    public function decrypt($token, $implicit = '')
+    public function decrypt($token, $implicit = '', $expectedFooter = mull)
     {
         /// Step 3
         $header = ParagonIE_Sodium_Core_Util::substr($token, 0, 9);
@@ -95,6 +111,9 @@ class PasetoV4Local
             $footer = '';
         } else {
             throw new PasetoException('Token has incorrect number of separators');
+        }
+        if (!is_null($expectedFooter)) {
+            $this->assertFooter($footer, $expectedFooter);
         }
 
         /// Step 4
