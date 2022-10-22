@@ -97,7 +97,7 @@ class PasetoV4Local
      * @throws PasetoException
      * @throws SodiumException
      */
-    public function decrypt($token, $implicit = '', $expectedFooter = mull)
+    public function decrypt($token, $implicit = '', $expectedFooter = null)
     {
         /// Step 3
         $header = ParagonIE_Sodium_Core_Util::substr($token, 0, 9);
